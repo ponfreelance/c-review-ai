@@ -48,3 +48,23 @@ docker compose up --build
 ## 設計書
 
 `.design/` ディレクトリに設計書一式があります。
+
+## このツールでやらないこと
+
+ブラウザでまず触ってみる体験版です。以下は **対象外** です:
+
+- ❌ コマンドライン実行（`creview your.c`）→ [creview](https://github.com/ponfreelance/creview)
+- ❌ Claude API による文脈レビュー → creview
+- ❌ プロジェクト横断の依存解析・MISRA 監査 → [C-Safety-audit-framework](https://github.com/ponfreelance/C-Safety-audit-framework)
+- ❌ CI 統合（SARIF / GitHub Actions）→ creview
+- ❌ 商用サポート・規格対応 → creview / CSAF のカスタム対応
+
+## 関連プロダクト
+
+C言語レビュー / 監査の OSS 3 製品。用途で使い分けてください。
+
+| プロダクト | 役割 | 形態 |
+|---|---|---|
+| **c-review-ai**（このリポ） | まず Web で触ってみる体験版 | Web (Docker) |
+| [creview](https://github.com/ponfreelance/creview) | 手元で本気で使う C 言語レビュー（36パターン + Claude API） | CLI (Win/Mac/Linux バイナリ) |
+| [C-Safety-audit-framework](https://github.com/ponfreelance/C-Safety-audit-framework) | プロジェクト横断の安全性監査（MISRA・依存グラフ） | Python パッケージ |
