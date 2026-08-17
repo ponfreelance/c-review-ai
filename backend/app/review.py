@@ -60,8 +60,11 @@ async def _do_review(code: str) -> ReviewResponse:
 
     try:
         response = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model="openai/gpt-oss-120b",
             max_tokens=4096,
+            # gpt-oss は reasoning もこの枠を消費する。長考不要・本文へ枠を回す
+            # （openai==1.30.1 は reasoning_effort 引数未対応のため extra_body で渡す）
+            extra_body={"reasoning_effort": "low"},
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": build_user_prompt(code)},
